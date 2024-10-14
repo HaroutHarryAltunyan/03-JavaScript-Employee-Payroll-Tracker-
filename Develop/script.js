@@ -4,17 +4,90 @@ const addEmployeesBtn = document.querySelector('#add-employees-btn');
 // Collect employee data
 const collectEmployees = function() {
   // TODO: Get user input to create and return an array of employee objects
-}
+
+
+
+
+
+    const employees = [];
+    let continueAdding = true;
+  
+    while (continueAdding) {
+      const firstName = prompt("Enter the employee's first name:");
+      const lastName = prompt("Enter the employee's last name:");
+      let salary = parseFloat(prompt("Enter the employee's salary (as a number):"));
+      
+      // Validate salary input, set it to 0 if it's not a number
+      if (isNaN(salary)) {
+        salary = 0;
+      }
+  
+      // Add employee object to the array
+      employees.push({ firstName, lastName, salary });
+  
+      // Ask the user if they want to add more employees
+      continueAdding = confirm("Do you want to add another employee?");
+    }
+  
+    return employees;
+  };
+
+
+
+
+
 
 // Display the average salary
 const displayAverageSalary = function(employeesArray) {
   // TODO: Calculate and display the average salary
-}
 
+
+
+
+
+
+    if (employeesArray.length === 0) {
+      console.log("No employees to calculate salary.");
+      return;
+    }
+  
+    const totalSalary = employeesArray.reduce((total, employee) => total + employee.salary, 0);
+    const averageSalary = totalSalary / employeesArray.length;
+  
+    console.log(`Total employees: ${employeesArray.length}`);
+    console.log(`Average salary: $${averageSalary.toFixed(2)}`);
+  };
+
+
+
+
+
+  
 // Select a random employee
 const getRandomEmployee = function(employeesArray) {
   // TODO: Select and display a random employee
-}
+
+
+
+
+ 
+    if (employeesArray.length === 0) {
+      console.log("No employees available.");
+      return;
+    }
+  
+    const randomIndex = Math.floor(Math.random() * employeesArray.length);
+    const randomEmployee = employeesArray[randomIndex];
+  
+    console.log(`Random employee selected: ${randomEmployee.firstName} ${randomEmployee.lastName}`);
+  };
+
+
+
+
+
+
+
 
 /*
   ====================
